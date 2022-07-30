@@ -1,0 +1,47 @@
+- Gerenciamento de Pacotes *comandos Ubunto e Debian: (.deb)
+
+apt edit-sources = lista todos enderecoes de repositorios oficiais (repositorios base)
+
+apt-get --help = opcoes de instalacao 
+apt
+
+apt list = lista todos os pacotes disponiveis no servidor
+apt list --installed = lista todos os pacotes instalados na maquina
+
+apt list --upgradeable = lista todos os pacotes que possuem atualizacao
+
+apt search + nomePacote = busca versoes do pacote (programa)
+
+apt install + nomePacote = instala pacote
+
+wget + link = baixa por link (faz download)
+
+apt install unzip = instala descompactador
+
+apt remove + nomePacote = desinstala pacote
+
+
+--------------------------------------------------------------------
+
+- Atualizacao de SO e pacotes
+
+apt update = baixa atualizacao de todos os pacotes instalados
+
+apt upgrade = atualiza todos os pacotes instalados
+
+
+- Instalacao de arquivos DEB
+
+apt install ./nomeArquivo.deb = instala pacote baixado
+
+--------------------------------------------------------------------
+
+
+- Gerenciamento de Pacotes *comandos Fedora, Red Hat e CenTOS: (.rpm)
+
+dnf --help
+yum --help
+
+dnf search + nomePacote = busca versoes do pacote (programa)
+
+dnf remove + nomePacote

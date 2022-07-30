@@ -1,0 +1,31 @@
+---Copiando arquivos e manipulando processos---
+
+- copiar aquivo
+cp = copia arquivo
+cdp + origemArquivo + arquivo + destinoArquivo
+ex: cp /home/marcos_barker/arquivo.txt /Documentos
+ex: cp /home/marcos_barker/*.txt /Documentos (copia todos .txt)
+obs: se tiver arquivos de mesmo nome, serao sobrescritos
+
+- Como alertar arquivo de mesmo nome?
+cp -i = pergunta antes de sobrepor arquivo de mesmo nome
+ex: cp -i /home/marcos_barker/arquivo.txt /Documentos
+
+- Copia recursiva (pastas e subpastas)
+-r - copia recursiva
+ex: cp /home/marcos_barker/* /Documentos/ -r (copia todo marcos_barker para Documentos)
+
+-v = modo verboso (mostra linhaa de execucao)
+ex: cp /home/marcos_barker/* /Documentos/ -r -v -i
+
+
+----Renomenando e movendo(recortando) arquivos----
+mv --help
+mv = move o arquivo
+ex: mv /home/marcos_barker/arquivo.txt /Documentos
+ex: mv /home/marcos_barker/arquivo.txt /Documentos -i -v
+ex: mv /home/marcos_barker/* /Documentos -i -v
+
+- Renomear
+mv + nomeAtual + nomeNovo = renomoeia arquivo
+ex: mv documentosTexto.txt Documentos_texto.txt

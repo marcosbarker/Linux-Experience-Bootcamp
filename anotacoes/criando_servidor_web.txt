@@ -1,0 +1,12 @@
+---Criando um Servidor Web com Linux---
+
+- Instalando o Apache2 HTTP Server
+1 - apt install apache2
+2 - systemctl status apache2 = consulta se o sistema esta ativo
+3 - cd /var/www/html = local de exibicao do servidor
+
+4 - wget + link = faz download
+5 - descompactar = unzip + nome arquivo.zip
+6 - copiar recursivamente arquivos para dentro da pasta www/html
+ex: cp -R * /var/www/html/
+

@@ -1,0 +1,129 @@
+---------------------------------------------------------------------------
+- criando e excluindo usuarios
+
+w = lista usuarios logados
+
+*cria usuario: useradd + nomeUsuario
+*cria usuario completo com shell: useradd userName -m -c "nomeUsuario" -s /bin/bash
+*cria usuario completo com shell + password: useradd userName -m -c "nomeUsuario" -s /bin/bash -p $(openssl passwd -crypt + senha)
+*cria usuario completo com shell + password + atribuicao de grupo: useradd userName -m -c "nomeUsuario" -s /bin/bash -p $(openssl passwd -crypt + senha) -G nomeGrupo
+*exluir usuario: userdel -f nomeUsuario
+*excluir usurio e diretorios: userdel -r -f nomeUsuario
+
+-m = cria pasta usuario
+-c + "nome"  = cadastra nome completo
+
+ex: useradd marcos_barker -m -c "Marcos Paulo"
+
+passwd  + nomeUsuario = cria senha para o usuario
+
+(chsh = change shell)
+
+chsh -s /bin/bash + usuario = configura um shell para conta (padrao é o bash)
+
+criar usuario com prazo de expiracao:
+useradd "userName" -m -c "nomeUsuario" -e dataExpiracao
+
+ex: useradd marcos_barker -m -c "Marcos" -e 22/09/2024
+---------------------------------------------------------------------------
+
+- Editando usuarios
+usermod + userName = edicao no usuario
+usermod + userName + comandoParaSerModificado
+ex: usermod marcos_barker -c "Novo nome usuario" = edita nome de usuario
+
+-e + dataExpiracao = inclui data de exiracao
+ex: useradd marcos_barker -m -c "Marcos" -e 22/09/2024
+ex: passwd marcos_barker 22/09/2024
+obs: so com o -e forca a troca de senha na proxima entrada
+
+ex mudando shell: usermode marcos_barker -s /bin/bash
+
+
+- Consultar usuarios cadastrados no sistema
+
+cat /etc/passwd = lista usuarios
+
+--------------------------------------------------------------------------
+
+script para criar varios usuarios: nano criandoUser.sh (tem que ter a extensao sh informada)
+
+inicio script: #!/bin/bash
+
+script:
+
+#!/bin/bash
+
+echo "Criando usuarios..."
+
+useradd marcos0 - c  "Usuario Convidado" -s /bin/bash -m -p $(openssl passwd -cr>
+passwd marcos0 -e
+
+useradd marcos1 - c  "Usuario Convidado" -s /bin/bash -m -p $(openssl passwd -cr>
+passwd marcos1 -e
+
+useradd marcos2 - c  "Usuario Convidado" -s /bin/bash -m -p $(openssl passwd -cr>
+passwd marcos2 -e
+
+--------------------------------------------------------------------------
+
+- Grupos de Usuarios (add usuario a um grupo
+cat /etc/group = lista grupos de usuarios
+
+usermod -g adm, sudo + userName = adiciona o usuarios aos grupos adm e sudo
+ex: usermod -g adm, sudo marcos_barker
+
+
+- Grupos (criar grupo)
+
+groupadd + nomeGrupo= cria um grupo
+groupdel + nomeGrupo = exclui um grupo
+
+usermod -G + nomeGrupo + userName = transfere usuario para grupo escolhido
+ex: usermode -G GRUPO_TESTE marcos_barker
+
+gpasswd -d + userName + nomeGrupo = remove usuario de um grupo
+ex: gpasswd -d marcos_barker GRUPO_TESTE
+
+--------------------------------------------------------------------------
+
+- Sistema de permisdsoes
+
+em /home
+
+ls -l = mostra permissoes dos arquivos
+
+COLUNAS: 1(dono), 2(grupo), 3(outros);
+
+INICIA COM: d(diretorio), -(arquivo), r(leitura), w(escrita), x(execucao);
+
+chown + userName = muda dono do grupo (change owner)
+
+chown + userName : nomeGrupo + nomeDiretorio
+ex: chown marcos_barker:GRUPO_TESTE /Documentos/
+
+--------------------------------------------------------------------------
+
+- Alterando permissoes
+
+chmod = mudanca de permissoes
+indice base numerica = 4(r), 2(w), 1(x), 0(); (os numeros sao somaveis)
+
+chmod + permissoesDono + permissoesGrupo + permissoesOutros + nomeDiretorio = atribui permissoes para os tres grupos de um diretorio.
+
+ex: chmod 750 /Documentos/
+
+7 = 4+2+1
+5 = 4+1
+0 = 0
+
+--------------------------------------------------------------------------
+
+- Permissoes de script
+
+chmod + permissoes + nomeArquivo = atribui permissoes para arquivos script
+
+ex: chmod 744 date.sh
+
+obs: usando letras a atribuicao ira apenas para o dono
+ex: chmod +rwx date.sh (pode ser usado apenas uma letra, tambem serve com - (subtracao))

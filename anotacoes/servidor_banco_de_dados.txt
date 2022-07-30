@@ -1,0 +1,18 @@
+--Servidor de Banco de Dados--
+
+1 - apt install mysql-server-8.0 = instala o mySql
+2 - mysql -u root -p = logar no banco 
+3 - sshow databases; = lista bancos
+
+4 - create database + nome = cria novo banco
+5 - user + nomeBanco = abre banco
+6 - criar tabela:
+ex: create table Pessoas (PessoaID int, Nome varchar(50), Sobrenome varchar(50), Endereco varchar(100), Cidade varchar(50));
+
+7 - show tables = mostra tabelas
+8 - inserir dados:
+ex: insert into Pessoas (PessoaID, Nome, Sobrenome, Endereco, Cidade) VALUES (1, 'Marcos', 'Correa', 'Euclides da Cunha, 268', 'Petropolis');
+
+9 - select * from Pessoas; = consulta tabela
+
+10 - exit = sai do banco

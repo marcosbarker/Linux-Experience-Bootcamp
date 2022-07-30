@@ -1,0 +1,24 @@
+-----Iniciando, visualizando e encerrando um processo-------
+
+ps = mostra processos atuais
+a = mostra processos atuais de todos usuarios
+u = fornece nome
+x = processos fora do console
+
+-- finalizar processo
+
+kill = mata o processo
+kill + numero do processo
+killall + nome = mata processo inteiro
+
+ex: kill 12076
+ex: killall chrome
+
+
+---deslogar usuario---
+
+w = lista usuarios logados
+who -a = lista usuarios mais PID
+
+kill + PID = desloga usuario
+ex: kill 2311

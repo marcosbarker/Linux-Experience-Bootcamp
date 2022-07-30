@@ -1,0 +1,115 @@
+-Tipos de acesso remoto:
+Acesso remoto via Windows = PuTTy 
+Acesso remoto via Linux = SSH
+- servico de acesso remoto - SSHD
+acessando configuracoes do sshd: cat /etc/ssh/ssh_config
+permitindo o 'PermitRootLogin': sudo nano cat /etc/ssh/ssh_confi (descomentar PermitRootLogin e colocar um yes)(PermitRootLogin yes)
+verificar servico: systemctl status sshd
+
+Ip no Linux, comando ip a = ip esta no campo inet
+
+Comandos terminal:
+
+- listar configuracoes de rede ip a
+
+pwd = mostra o diretorio
+ctrl+l = limpa a tela
+cd / = vai para o diretorio raiz
+cd = entra nas pastas
+cd .. = retorna uma pasta
+ls = lista arquivos 
+cd ../ = voltar um e entrar em outro
+cd /diretorio1/diretorio2 = entrar em um e depois no outro
+
+ls | more = listar arquivos em uma so coluna
+ctrl + c = sair no ls | more
+
+ls + arquivo = busca especifica
+
+ls p* = lista todos arquivos que iniciam com p
+
+ls m?g* = primeira letra tem que ser um m a segunda qualquer uma e a terceira tem que ser um g e o * pode vir qualquer coisa
+
+touch + nome.txt = cria arquivo vazio
+
+ls arquivo[1,4] = lista o arquivo 1 e 4
+ls arquivo[1-4] = lista os arquivos do 1 ao 4
+ls arquivo[^1,4] = nao lista os citados
+ls arquivo[^1-4] = nao lista os citados
+obs: serve para remover, copiar e etc...
+
+
+- localizando arquivos
+ls /sys = lista aquivos dentro da pasta sys
+ls /sys/kernel = lista arquivos dentro da pasta kernel que esta dentro de sys
+ls /sys/kernel/p* = arquivos com p 
+
+
+- find (buscador de arquivo com parametro)
+find -name arq* = lista todas as pastas com arq dentro
+
+
+- Criando Diretorios (pastas)
+
+mkdir + nomeDaPasta = cria uma pasta
+touch + nome.txt = cria arquivo vazio
+mkdir 'Nome Composto' = cria diretorio com nome composto
+
+
+- Remover Diretorios (pasta)
+rmdir + nomePasta = remove pasta (se nao tiver conteudo)
+rm + nomeArquivo = remove arquivo
+rm + nomearquivo* = remove todos os qrquivos de mesmo nome
+rm -rf + nomeDiretorio = apaga diretorio com arquivos dentro (r recursivo, f forca)
+
+- help (comando + --help)
+ls -l = lista longa
+ls -a = lista arquivos, inclusive os ocultos (la)
+ls -h = listagem formato humano
+rm -v + nomeArquivo = modo verboso
+rm -i + nomeArquivo = pergunta se quer fazer a acao
+
+man + comando = ajuda em forma de pagina
+
+
+- Atividades de adm
+cat /etc/goup = lista todos os grupos do sistema
+sudo = para executar comando como adm
+sudo su = logar como adm (su super usuario = root)
+
+- Atribuir senha para usuario
+sudo passwd + nomeUsuario = atribui senha para o usuario
+ex: sudo passwd root = atribui senha para o root
+su + nomeUsuario = retorna para o usuario
+ 
+
+
+- trabalhando com arquivos de texto (editor nano, vi)
+
+Vi comandos: i (insert, inicia o vi), esc (retorna ao modo inicial), : (menu), w (salvar), q (sair).
+
+Nano comandos: menu visual (^ é o ctrl da esquerda)
+
+cat + nomeArquivo = leitura do arquivo (visualizar conteudo)
+
+
+
+- Historico de comandos
+history = armazena os ultimos mil comandos
+
+! + mais numero do comando = executa o comando (ex: !303)
+!! = executa ultimo comando
+!? + nomeComando + ? = filtra por comando
+history | grep "termoPesquisa" = retorna pesquisa por termo
+
+Mudando variavel de ambiente history, colocar data e hora do comando: export HISTTIMEFORMAT="%c " (no lugar no C pode ser outro formato)
+
+history -c = apaga todo historico de comandos
+
+Mudando parametro do terminal: set +o history(impede armazenamento do comando no historico), set -o history(permite armazenamento do comando no historico)  
+
+Mudar quantidade de comandos armazenados: pastaUsuario > .bashrc (mudar parametro HISTISIZE)
+
+history -w = armazena todos os comandos no arquivo oculto (pasta do usuario) .bash_history
+
+

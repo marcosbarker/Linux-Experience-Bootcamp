@@ -1,0 +1,46 @@
+- Gerenciamento de Arquivos e Discos
+
+----listar discos--------------------
+
+lsblk = visualiza discos disponiveis
+
+obs: loop(disco virtual), sd(disco, letras definem quantidade, numeros definem particoes)
+
+fdisk -l = lista os discos
+
+------------------------------------
+
+------Usando novos discos-----------
+
+- Configuracao inicial:
+1 - fdisk + caminho (ex: fdisk /dev/sdb
+2 - m (mostra opcoes)
+3 - n = adiciona nova particao
+4 - p = particao primaria
+5 - 1 = primeiro numero da particao
+6 - w (salvar)
+
+- Formatar
+1 - mkfs. + formato + caminho = (mkfs = formatar + extensao(no caso o ext4))
+ex: mks.ext4 /dev/sdb
+2 - y
+
+------------------------------------
+
+--Montando e desmontando discos-----
+
+- Montando
+- Os discos sao montados no diretorio mnt por padrao (fica na raiz)
+1 - criar um diretorio (mkdir) dentro de mnt
+2 - mount + caminhoDisco + caminhoMontagem
+ex: mount /dev/sdb/ /mnt/disco/
+
+- Desmontando
+1 - umount /dev/sdb/
+
+
+- Montar o disco automaticamente toda vez que religar o pc
+1 - nano /etc/fstab = arquivo de lista discos montados
+2 - incluir no arquivo caminho do novo disco
+3 - disco + local + sistemaArquivo + defaults 0 0
+ex: /dev/sdb /disco ext4 defaults 0 0

@@ -1,0 +1,64 @@
+----IaC-(infraestrutura_com_codigo)-desafio----
+
+01 - Entrar na raiz do root: sudo
+02 - cd /
+03 - Caso precise exluir diretorios: rm -rf /diretorio/
+04 - Caso precise listar usuarios: cat /etc/passwd (lista usuarios)
+05 - Caso precise exluir usuarios: userdel -r usuario
+06 - Caso precide listar grupos: cat /etc/group
+07 - Caso precide excluir grupos: groupdel grupo
+
+08 - Criar script
+09 - Criar pasta para o script: mkdir script
+10 - Criar novo script: nano iac1.sh
+11 - Criar scopo padrao do script: #!/bin/bash
+12 -  
+
+
+#!/bin/bash
+
+echo "***_Criando os diretorios_***"
+mkdir /publico
+mkdir /adm
+mkdir /ven
+mkdir /sec
+
+
+echo "***_Criando Grupos de Usuarios_***"
+groupadd GRP_ADM
+groupadd GRP_VEN
+groupadd GRP_SEC
+
+
+echo "***_Criando Usuarios e atibuindo Grupos_***"
+useradd marcos_barker -c"Marcos Paulo" -m -s /bin/bash -p $(openssl passwd -crypt MinhaSenha123) -G GRP_ADM
+useradd ana -c"Ana Carolina" -m -s /bin/bash -p $(openssl passwd -crypt MinhaSenha123) -G GRP_ADM
+useradd joaquim -c"Joaquim" -m -s /bin/bash -p $(openssl passwd -crypt MinhaSenha123) -G GRP_VEN
+useradd paula -c"Ana Paula" -m -s /bin/bash -p $(openssl passwd -crypt MinhaSenha123) -G GRP_VEN
+useradd marlene -c"Marlene" -m -s /bin/bash -p $(openssl passwd -crypt MinhaSenha123) -G GRP_SEC
+useradd jessica -c"Marlene" -m -s /bin/bash -p $(openssl passwd -crypt MinhaSenha123) -G GRP_SEC
+
+
+echo "***_Atribuindo permissoes aos diretorios_***"
+chown root:GRP_ADM /adm
+chown root:GRP_VEN /ven
+chown root:GRP_SEC /sec
+
+chmod 770 /adm
+chmod 770 /ven
+chmod 770 /sec
+chmod 777 /publico
+
+echo "***_Script =^.^= Finalizado_***"
+
+echo " \    /\  "
+echo "  )  ( ') "
+echo " (  /  )  "
+echo "  \(__)|  "
+
+
+
+
+
+13 - Dar permissao de execucao: chmod +x script
+14 - Executar script: ./script

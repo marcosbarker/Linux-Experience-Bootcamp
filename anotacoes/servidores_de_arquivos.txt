@@ -1,0 +1,30 @@
+--Configurando servidor de arquivos--
+
+0 - Criar pasta publica compartilhada: mkdir publica
+1 - Instalar o SAMBA: apt install samba -y
+2 - Acessar o SAMBA: cd /etc/samba/smb.conf
+3 - Editar: nano /etc/samba/smb.conf
+
+4 - Configuracoes de compartilhamento:
+
+[publica]
+path = /publica
+writable = yes
+quest ok = yes
+quest only = yes
+
+5 - systemctl restart = reiniciar servico em segundo plano
+6 - systemctl restart smbd = smb (samba) d(daemon)
+7 - systemctl status smbd = status da aplicacao
+8 - systemctl enable smbd = para executar automaticamente o servidor
+
+-----------------------------------------
+
+
+--Configurando acesso via maquna cliente--
+
+1 - ip a : lista ip da maquina no linux
+2 - No Win na barra de endereço. 
+3 - \\ip do linux\nomeDiretorio: ex: \\192.168.1.5\publica
+4 - Ira pedir a credencial do usurio no servidor
+
